@@ -1,0 +1,161 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Button from '@components/ui/Button.astro';
+import SectionTitle from '@components/ui/SectionTitle.astro';
+import ServiceCard from '@components/ui/ServiceCard.astro';
+import { Image } from 'astro:assets';
+import fotoPlaceholder from '../assets/placeholder-foto.svg';
+
+const services = [
+  {
+    icon: '🤲',
+    title: 'Fisioterapia Manual',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Técnicas manuales para aliviar el dolor y recuperar la movilidad articular.',
+    badge: 'Más solicitado',
+  },
+  {
+    icon: '🏃',
+    title: 'Fisioterapia Deportiva',
+    description:
+      'Tratamiento y prevención de lesiones deportivas. Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam.',
+    badge: 'Deportistas',
+  },
+  {
+    icon: '🧘',
+    title: 'Pilates Terapéutico',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ejercicio terapéutico para mejorar la postura y el control motor.',
+    badge: 'Grupal / Individual',
+  },
+  {
+    icon: '🧠',
+    title: 'Neurorehabilitación',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Recuperación funcional tras lesiones neurológicas.',
+    badge: 'Especializado',
+  },
+];
+---
+
+<BaseLayout
+  title="Inicio"
+  description="Raquel Martínez, fisioterapeuta en Madrid. Tratamientos personalizados de fisioterapia manual, deportiva, pilates terapéutico y neurorehabilitación."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-primary to-accent">
+    <div class="mx-auto max-w-6xl px-6 py-24 md:py-32">
+      <div class="grid items-center gap-12 md:grid-cols-2">
+        <div class="text-white">
+          <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-white/70">
+            Fisioterapia · Madrid
+          </p>
+          <h1 class="text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
+            Tu bienestar,<br />en buenas manos
+          </h1>
+          <p class="mt-6 text-lg leading-relaxed text-white/80">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <Button href="#servicios" variant="outline" size="lg">Ver servicios</Button>
+            <a
+              href="/contacto"
+              class="inline-flex items-center justify-center rounded-btn bg-white px-8 py-4 text-base font-semibold text-primary transition-colors hover:bg-white/90"
+            >
+              Reservar cita
+            </a>
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <div class="overflow-hidden rounded-2xl shadow-2xl">
+            <Image
+              src={fotoPlaceholder}
+              alt="Raquel Martínez, fisioterapeuta"
+              width={300}
+              height={400}
+              class="h-auto w-64 md:w-80"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Ola decorativa -->
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 60L1440 60L1440 20C1200 60 960 0 720 20C480 40 240 0 0 20Z" fill="#F8F9FA"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios" class="mx-auto max-w-6xl px-6 py-20">
+    <div class="mb-12 text-center">
+      <SectionTitle
+        title="Nuestros Servicios"
+        subtitle="Un enfoque integral para cada paciente, combinando las técnicas más avanzadas con un trato cercano y personalizado."
+        centered
+      />
+    </div>
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {services.map((s) => <ServiceCard {...s} />)}
+    </div>
+  </section>
+
+  <!-- Sobre mí (resumen) -->
+  <section class="bg-white py-20">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="grid items-center gap-12 md:grid-cols-2">
+        <div class="flex justify-center">
+          <div class="overflow-hidden rounded-2xl shadow-lg">
+            <Image
+              src={fotoPlaceholder}
+              alt="Raquel Martínez"
+              width={300}
+              height={400}
+              class="h-auto w-64 md:w-72"
+            />
+          </div>
+        </div>
+        <div>
+          <SectionTitle
+            title="Hola, soy Raquel"
+            subtitle=""
+          />
+          <p class="mt-6 leading-relaxed text-text/70">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+          <p class="mt-4 leading-relaxed text-text/70">
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+          </p>
+          <div class="mt-8">
+            <Button href="/quienes-somos" variant="outline">Conocer más →</Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="bg-primary py-20">
+    <div class="mx-auto max-w-3xl px-6 text-center text-white">
+      <h2 class="text-3xl font-bold md:text-4xl">
+        ¿Lista para mejorar tu calidad de vida?
+      </h2>
+      <p class="mt-4 text-lg text-white/75">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Da el primer paso hoy.
+      </p>
+      <div class="mt-8">
+        <a
+          href="/contacto"
+          class="inline-flex items-center justify-center rounded-btn bg-white px-10 py-4 text-base font-bold text-primary transition-colors hover:bg-white/90"
+        >
+          Reservar cita
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

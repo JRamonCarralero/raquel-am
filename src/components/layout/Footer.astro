@@ -1,0 +1,55 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-primary/10 bg-white">
+  <div class="mx-auto max-w-6xl px-6 py-12">
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-3">
+      <!-- Columna 1: Marca -->
+      <div>
+        <p class="text-lg font-bold text-primary">Raquel Martínez</p>
+        <p class="mt-1 text-sm text-accent font-medium">Fisioterapia</p>
+        <p class="mt-4 text-sm leading-relaxed text-text/70">
+          Tratamientos personalizados para recuperar tu bienestar y calidad de vida.
+        </p>
+      </div>
+
+      <!-- Columna 2: Navegación -->
+      <div>
+        <p class="mb-4 text-sm font-semibold uppercase tracking-wider text-text/50">Navegación</p>
+        <ul class="space-y-2">
+          {
+            [
+              { href: '/', label: 'Inicio' },
+              { href: '/quienes-somos', label: 'Quién soy' },
+              { href: '/contacto', label: 'Contacto' },
+            ].map(({ href, label }) => (
+              <li>
+                <a href={href} class="text-sm text-text/70 transition-colors hover:text-primary">
+                  {label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Columna 3: Contacto y horario -->
+      <div>
+        <p class="mb-4 text-sm font-semibold uppercase tracking-wider text-text/50">Contacto</p>
+        <ul class="space-y-2 text-sm text-text/70">
+          <li>📍 Calle del Bienestar, 42, 2ºB — Madrid</li>
+          <li>📞 +34 912 345 678</li>
+          <li>✉️ hola@raquel-fisioterapia.es</li>
+          <li class="pt-2 font-medium text-text/50">Horario</li>
+          <li>Lun–Vie: 9:00 – 20:00</li>
+          <li>Sáb: 10:00 – 14:00</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-10 border-t border-primary/10 pt-6 text-center text-xs text-text/40">
+      © {year} Raquel Martínez Fisioterapia. Todos los derechos reservados.
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,24 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-primary: #1a5f7a;
+  --color-accent: #57c5b6;
+  --color-bg: #f8f9fa;
+  --color-text: #2c3e50;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+
+  --radius-card: 1rem;
+  --radius-btn: 0.75rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+  }
+}

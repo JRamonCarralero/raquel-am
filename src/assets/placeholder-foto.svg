@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" fill="none">
+  <rect width="300" height="400" fill="#E8F4F8" rx="16"/>
+  <!-- cabeza -->
+  <circle cx="150" cy="120" r="55" fill="#B8D8E8"/>
+  <!-- cuerpo -->
+  <ellipse cx="150" cy="310" rx="80" ry="90" fill="#B8D8E8"/>
+  <!-- cuello -->
+  <rect x="130" y="170" width="40" height="40" fill="#B8D8E8"/>
+  <!-- bata -->
+  <path d="M70 260 Q150 230 230 260 L240 400 H60 Z" fill="#1A5F7A" opacity="0.6"/>
+  <!-- cruz médica -->
+  <rect x="138" y="290" width="24" height="8" rx="4" fill="white"/>
+  <rect x="146" y="282" width="8" height="24" rx="4" fill="white"/>
+</svg>

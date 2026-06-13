@@ -1,0 +1,79 @@
+---
+const navLinks = [
+  { href: '/', label: 'Inicio' },
+  { href: '/quienes-somos', label: 'Quién soy' },
+  { href: '/contacto', label: 'Contacto' },
+];
+
+const pathname = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
+  <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2">
+      <span class="text-xl font-bold text-primary">Raquel Martínez</span>
+      <span class="hidden text-sm text-accent sm:block">· Fisioterapia</span>
+    </a>
+
+    <!-- Nav desktop -->
+    <ul class="hidden items-center gap-8 md:flex">
+      {
+        navLinks.map(({ href, label }) => (
+          <li>
+            <a
+              href={href}
+              class={`text-sm font-medium transition-colors hover:text-primary ${
+                pathname === href
+                  ? 'border-b-2 border-accent pb-0.5 text-primary'
+                  : 'text-text'
+              }`}
+            >
+              {label}
+            </a>
+          </li>
+        ))
+      }
+      <li>
+        <a
+          href="/contacto"
+          class="rounded-btn bg-primary px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
+        >
+          Reservar cita
+        </a>
+      </li>
+    </ul>
+
+    <!-- Hamburguesa mobile (CSS puro con checkbox) -->
+    <label for="menu-toggle" class="cursor-pointer md:hidden" aria-label="Abrir menú">
+      <svg class="h-6 w-6 text-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </label>
+    <input type="checkbox" id="menu-toggle" class="peer hidden" />
+
+    <!-- Nav mobile -->
+    <div
+      class="absolute left-0 top-full hidden w-full flex-col gap-1 border-t border-gray-100 bg-white px-6 py-4 shadow-md peer-checked:flex md:hidden"
+    >
+      {
+        navLinks.map(({ href, label }) => (
+          <a
+            href={href}
+            class={`rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-50 hover:text-primary ${
+              pathname === href ? 'text-primary' : 'text-text'
+            }`}
+          >
+            {label}
+          </a>
+        ))
+      }
+      <a
+        href="/contacto"
+        class="mt-2 rounded-btn bg-primary px-4 py-2 text-center text-sm font-semibold text-white transition-colors hover:bg-primary/90"
+      >
+        Reservar cita
+      </a>
+    </div>
+  </nav>
+</header>
