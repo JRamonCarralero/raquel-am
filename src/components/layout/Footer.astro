@@ -20,9 +20,9 @@ const year = new Date().getFullYear();
         <ul class="space-y-2">
           {
             [
-              { href: '/', label: 'Inicio' },
-              { href: '/quienes-somos', label: 'Quién soy' },
-              { href: '/contacto', label: 'Contacto' },
+              { href: '#inicio', label: 'Inicio' },
+              { href: '#quien-soy', label: 'Quién soy' },
+              { href: '#contacto', label: 'Contacto' },
             ].map(({ href, label }) => (
               <li>
                 <a href={href} class="text-sm text-text/70 transition-colors hover:text-primary">

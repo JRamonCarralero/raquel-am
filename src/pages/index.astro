@@ -3,6 +3,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import Button from '@components/ui/Button.astro';
 import SectionTitle from '@components/ui/SectionTitle.astro';
 import ServiceCard from '@components/ui/ServiceCard.astro';
+import Badge from '@components/ui/Badge.astro';
 import { Image } from 'astro:assets';
 import fotoPlaceholder from '../assets/placeholder-foto.svg';
 
@@ -36,14 +37,55 @@ const services = [
     badge: 'Especializado',
   },
 ];
+
+const valores = [
+  {
+    icon: '👂',
+    title: 'Escucha activa',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cada paciente tiene una historia única que merece ser escuchada.',
+  },
+  {
+    icon: '🎯',
+    title: 'Tratamiento personalizado',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. No existen protocolos genéricos, solo planes adaptados a ti.',
+  },
+  {
+    icon: '🔬',
+    title: 'Evidencia científica',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Técnicas respaldadas por la investigación y la práctica clínica.',
+  },
+];
+
+const titulaciones = [
+  'Graduada en Fisioterapia — Universidad Complutense de Madrid',
+  'Máster en Fisioterapia Deportiva — UCAM Murcia',
+  'Especialista en Fisioterapia Neurológica — Bobath',
+  'Certificada en Pilates Terapéutico — Stott Pilates',
+  'Colegiada por el Colegio Profesional de Fisioterapeutas de Madrid — Nº 12345',
+];
+
+const contactInfo = [
+  { icon: '📍', label: 'Dirección', value: 'Calle del Bienestar, 42, 2ºB\n28001 Madrid' },
+  { icon: '📞', label: 'Teléfono', value: '+34 912 345 678' },
+  { icon: '✉️', label: 'Email', value: 'hola@raquel-fisioterapia.es' },
+];
+
+const horario = [
+  { dia: 'Lunes – Viernes', horas: '9:00 – 20:00' },
+  { dia: 'Sábados', horas: '10:00 – 14:00' },
+  { dia: 'Domingos', horas: 'Cerrado' },
+];
 ---
 
 <BaseLayout
-  title="Inicio"
+  title="Fisioterapia en Madrid"
   description="Raquel Martínez, fisioterapeuta en Madrid. Tratamientos personalizados de fisioterapia manual, deportiva, pilates terapéutico y neurorehabilitación."
 >
-  <!-- Hero -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-primary to-accent">
+  <!-- ═══════════════════════════════════════════ INICIO ══ -->
+  <section id="inicio" class="relative overflow-hidden bg-gradient-to-br from-primary to-accent">
     <div class="mx-auto max-w-6xl px-6 py-24 md:py-32">
       <div class="grid items-center gap-12 md:grid-cols-2">
         <div class="text-white">
@@ -58,9 +100,14 @@ const services = [
             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
           <div class="mt-8 flex flex-wrap gap-4">
-            <Button href="#servicios" variant="outline" size="lg">Ver servicios</Button>
             <a
-              href="/contacto"
+              href="#servicios"
+              class="inline-flex items-center justify-center rounded-btn border-2 border-white px-8 py-4 text-base font-semibold text-white transition-colors hover:bg-white hover:text-primary"
+            >
+              Ver servicios
+            </a>
+            <a
+              href="#contacto"
               class="inline-flex items-center justify-center rounded-btn bg-white px-8 py-4 text-base font-semibold text-primary transition-colors hover:bg-white/90"
             >
               Reservar cita
@@ -80,7 +127,6 @@ const services = [
         </div>
       </div>
     </div>
-    <!-- Ola decorativa -->
     <div class="absolute bottom-0 left-0 right-0">
       <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 60L1440 60L1440 20C1200 60 960 0 720 20C480 40 240 0 0 20Z" fill="#F8F9FA"/>
@@ -88,7 +134,7 @@ const services = [
     </div>
   </section>
 
-  <!-- Servicios -->
+  <!-- ═══════════════════════════════════════ SERVICIOS ══ -->
   <section id="servicios" class="mx-auto max-w-6xl px-6 py-20">
     <div class="mb-12 text-center">
       <SectionTitle
@@ -102,59 +148,222 @@ const services = [
     </div>
   </section>
 
-  <!-- Sobre mí (resumen) -->
-  <section class="bg-white py-20">
+  <!-- ══════════════════════════════════════ QUIÉN SOY ══ -->
+  <section id="quien-soy" class="bg-white py-20">
     <div class="mx-auto max-w-6xl px-6">
-      <div class="grid items-center gap-12 md:grid-cols-2">
-        <div class="flex justify-center">
+      <div class="grid items-start gap-12 md:grid-cols-2">
+        <div class="flex justify-center md:justify-start">
           <div class="overflow-hidden rounded-2xl shadow-lg">
             <Image
               src={fotoPlaceholder}
-              alt="Raquel Martínez"
-              width={300}
-              height={400}
-              class="h-auto w-64 md:w-72"
+              alt="Raquel Martínez García, fisioterapeuta"
+              width={340}
+              height={450}
+              class="h-auto w-72 md:w-80"
             />
           </div>
         </div>
         <div>
-          <SectionTitle
-            title="Hola, soy Raquel"
-            subtitle=""
-          />
+          <Badge text="Fisioterapeuta Colegiada Nº 12345" color="primary" />
+          <h2 class="mt-4 text-3xl font-bold text-text md:text-4xl">Raquel Martínez García</h2>
+          <div class="mt-2 h-1 w-16 rounded-full bg-accent"></div>
+
           <p class="mt-6 leading-relaxed text-text/70">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
             exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
           <p class="mt-4 leading-relaxed text-text/70">
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+            architecto beatae vitae dicta sunt explicabo.
           </p>
+          <p class="mt-4 leading-relaxed text-text/70">
+            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+            consequuntur magni dolores eos qui ratione sequi nesciunt neque porro quisquam.
+          </p>
+
           <div class="mt-8">
-            <Button href="/quienes-somos" variant="outline">Conocer más →</Button>
+            <p class="mb-3 text-sm font-semibold uppercase tracking-wider text-text/40">Formación</p>
+            <ul class="space-y-2">
+              {
+                titulaciones.map((t) => (
+                  <li class="flex items-start gap-2 text-sm text-text/70">
+                    <span class="mt-0.5 text-accent">✓</span>
+                    {t}
+                  </li>
+                ))
+              }
+            </ul>
           </div>
+        </div>
+      </div>
+
+      <!-- Valores -->
+      <div class="mt-20">
+        <div class="mb-12 text-center">
+          <SectionTitle
+            title="Mi filosofía de trabajo"
+            subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tres pilares guían cada tratamiento."
+            centered
+          />
+        </div>
+        <div class="grid gap-6 md:grid-cols-3">
+          {
+            valores.map(({ icon, title, description }) => (
+              <div class="rounded-card bg-bg p-8 shadow-sm">
+                <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-accent/10 text-3xl">
+                  {icon}
+                </div>
+                <h3 class="mb-3 text-xl font-bold text-text">{title}</h3>
+                <p class="text-sm leading-relaxed text-text/60">{description}</p>
+              </div>
+            ))
+          }
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA final -->
-  <section class="bg-primary py-20">
-    <div class="mx-auto max-w-3xl px-6 text-center text-white">
-      <h2 class="text-3xl font-bold md:text-4xl">
-        ¿Lista para mejorar tu calidad de vida?
-      </h2>
-      <p class="mt-4 text-lg text-white/75">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Da el primer paso hoy.
-      </p>
-      <div class="mt-8">
-        <a
-          href="/contacto"
-          class="inline-flex items-center justify-center rounded-btn bg-white px-10 py-4 text-base font-bold text-primary transition-colors hover:bg-white/90"
-        >
-          Reservar cita
-        </a>
+  <!-- ════════════════════════════════════════ CONTACTO ══ -->
+  <section id="contacto" class="bg-primary/5 py-20">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="mb-12 text-center">
+        <SectionTitle
+          title="Contacto"
+          subtitle="Te responderemos en menos de 24 horas."
+          centered
+        />
+      </div>
+
+      <div class="grid gap-12 md:grid-cols-2">
+        <!-- Info de contacto -->
+        <div>
+          <ul class="space-y-6">
+            {
+              contactInfo.map(({ icon, label, value }) => (
+                <li class="flex items-start gap-4">
+                  <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/10 text-xl">
+                    {icon}
+                  </div>
+                  <div>
+                    <p class="text-xs font-semibold uppercase tracking-wider text-text/40">{label}</p>
+                    <p class="mt-1 text-sm text-text/80 whitespace-pre-line">{value}</p>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+
+          <div class="mt-8 rounded-card bg-white p-6 shadow-sm">
+            <p class="mb-4 text-sm font-semibold uppercase tracking-wider text-text/40">Horario</p>
+            <ul class="space-y-2">
+              {
+                horario.map(({ dia, horas }) => (
+                  <li class="flex justify-between text-sm">
+                    <span class="text-text/70">{dia}</span>
+                    <span class="font-medium text-text">{horas}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <div class="mt-8 flex h-48 items-center justify-center rounded-card border-2 border-dashed border-primary/20 bg-white">
+            <div class="text-center text-text/40">
+              <div class="text-4xl">🗺️</div>
+              <p class="mt-2 text-sm">Mapa de ubicación</p>
+              <p class="text-xs">Calle del Bienestar, 42 — Madrid</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulario -->
+        <div class="rounded-card bg-white p-8 shadow-sm">
+          <form class="space-y-5" action="#" method="POST">
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label for="nombre" class="mb-1.5 block text-sm font-medium text-text/70">
+                  Nombre <span class="text-red-400">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="nombre"
+                  name="nombre"
+                  required
+                  placeholder="Tu nombre"
+                  class="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm text-text outline-none transition-colors focus:border-accent focus:ring-2 focus:ring-accent/20"
+                />
+              </div>
+              <div>
+                <label for="email" class="mb-1.5 block text-sm font-medium text-text/70">
+                  Email <span class="text-red-400">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="tu@email.com"
+                  class="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm text-text outline-none transition-colors focus:border-accent focus:ring-2 focus:ring-accent/20"
+                />
+              </div>
+            </div>
+
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label for="telefono" class="mb-1.5 block text-sm font-medium text-text/70">
+                  Teléfono
+                </label>
+                <input
+                  type="tel"
+                  id="telefono"
+                  name="telefono"
+                  placeholder="+34 6XX XXX XXX"
+                  class="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm text-text outline-none transition-colors focus:border-accent focus:ring-2 focus:ring-accent/20"
+                />
+              </div>
+              <div>
+                <label for="asunto" class="mb-1.5 block text-sm font-medium text-text/70">
+                  Asunto
+                </label>
+                <select
+                  id="asunto"
+                  name="asunto"
+                  class="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm text-text outline-none transition-colors focus:border-accent focus:ring-2 focus:ring-accent/20"
+                >
+                  <option value="">Selecciona una opción</option>
+                  <option value="primera-visita">Primera visita</option>
+                  <option value="revision">Revisión</option>
+                  <option value="informacion">Solicitar información</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="mensaje" class="mb-1.5 block text-sm font-medium text-text/70">
+                Mensaje <span class="text-red-400">*</span>
+              </label>
+              <textarea
+                id="mensaje"
+                name="mensaje"
+                required
+                rows="5"
+                placeholder="Cuéntanos qué podemos hacer por ti..."
+                class="w-full resize-none rounded-lg border border-gray-200 px-4 py-3 text-sm text-text outline-none transition-colors focus:border-accent focus:ring-2 focus:ring-accent/20"
+              ></textarea>
+            </div>
+
+            <Button type="submit" variant="primary" size="lg" class="w-full justify-center">
+              Enviar mensaje
+            </Button>
+
+            <p class="text-center text-xs text-text/40">
+              * Campos obligatorios. Tus datos se tratarán conforme a nuestra política de privacidad.
+            </p>
+          </form>
+        </div>
       </div>
     </div>
   </section>
