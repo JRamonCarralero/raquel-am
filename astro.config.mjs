@@ -3,7 +3,8 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://raquel-fisioterapia.es',
+  site: 'https://jramoncarralero.github.io',
+  base: '/raquel-am',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
