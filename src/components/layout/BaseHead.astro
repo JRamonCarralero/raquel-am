@@ -5,7 +5,7 @@ type Props = SEOProps;
 
 const { title, description, ogImage = '/og-image.svg', canonical, noindex = false } = Astro.props;
 
-const siteTitle = `${title} | Raquel Martínez Fisioterapia`;
+const siteTitle = `${title} | Raquel Alonso Martínez Fisioterapia`;
 const canonicalURL = canonical ?? new URL(Astro.url.pathname, Astro.site).toString();
 const ogImageURL = new URL(ogImage, Astro.site).toString();
 ---
