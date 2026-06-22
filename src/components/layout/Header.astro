@@ -1,57 +1,107 @@
 ---
 const navLinks = [
-  { href: '#inicio', label: 'Inicio' },
+  { href: '#inicio',    label: 'Inicio' },
   { href: '#quien-soy', label: 'Quién soy' },
-  { href: '#contacto', label: 'Contacto' },
+  { href: '#contacto',  label: 'Contacto' },
 ];
 ---
 
-<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
-  <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-    <!-- Logo -->
-    <a href="#inicio" class="flex items-center gap-2">
-      <span class="text-xl font-bold text-primary">Raquel Alonso Martínez</span>
-      <span class="hidden text-sm text-accent sm:block">· Fisioterapia</span>
+<header class="site-header">
+  <nav class="nav">
+    <a href="#inicio" class="nav__logo">
+      <span class="nav__logo-name">Raquel Alonso Martínez</span>
+      <span class="nav__logo-tag">· Fisioterapia</span>
     </a>
 
-    <!-- Nav desktop -->
-    <ul class="hidden items-center gap-8 md:flex">
-      {
-        navLinks.map(({ href, label }) => (
-          <li>
-            <a
-              href={href}
-              class="text-sm font-medium text-text transition-colors hover:text-primary"
-            >
-              {label}
-            </a>
-          </li>
-        ))
-      }
+    <ul class="nav__links">
+      {navLinks.map(({ href, label }) => (
+        <li><a href={href} class="nav__link">{label}</a></li>
+      ))}
     </ul>
 
-    <!-- Hamburguesa mobile (CSS puro con checkbox) -->
-    <label for="menu-toggle" class="cursor-pointer md:hidden" aria-label="Abrir menú">
-      <svg class="h-6 w-6 text-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <label for="menu-toggle" class="nav__hamburger" aria-label="Abrir menú">
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </label>
-    <input type="checkbox" id="menu-toggle" class="peer hidden" />
 
-    <!-- Nav mobile -->
-    <div
-      class="absolute left-0 top-full hidden w-full flex-col gap-1 border-t border-gray-100 bg-white px-6 py-4 shadow-md peer-checked:flex md:hidden"
-    >
-      {
-        navLinks.map(({ href, label }) => (
-          <a
-            href={href}
-            class="rounded-lg px-3 py-2 text-sm font-medium text-text transition-colors hover:bg-gray-50 hover:text-primary"
-          >
-            {label}
-          </a>
-        ))
-      }
+    <input type="checkbox" id="menu-toggle" class="nav__toggle" />
+
+    <div class="nav__mobile">
+      {navLinks.map(({ href, label }) => (
+        <a href={href} class="nav__mobile-link">{label}</a>
+      ))}
     </div>
   </nav>
 </header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: var(--white-95);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+
+  .nav {
+    max-width: var(--max-width);
+    margin-inline: auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .nav__logo { display: flex; align-items: center; gap: 0.5rem; }
+  .nav__logo-name { font-size: 1.125rem; font-weight: 700; color: var(--color-primary); }
+  .nav__logo-tag  { display: none; font-size: 0.875rem; color: var(--color-accent); }
+
+  .nav__links { display: none; align-items: center; gap: 2rem; }
+  .nav__link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text);
+    transition: color 0.15s;
+  }
+  .nav__link:hover { color: var(--color-primary); }
+
+  .nav__hamburger { cursor: pointer; color: var(--color-text); display: flex; }
+  .nav__toggle    { display: none; }
+
+  .nav__mobile {
+    display: none;
+    flex-direction: column;
+    gap: 0.25rem;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid #f3f4f6;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+  }
+  .nav__toggle:checked ~ .nav__mobile { display: flex; }
+
+  .nav__mobile-link {
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text);
+    transition: background-color 0.15s, color 0.15s;
+  }
+  .nav__mobile-link:hover { background-color: #f9fafb; color: var(--color-primary); }
+
+  @media (min-width: 640px) {
+    .nav__logo-tag { display: block; }
+  }
+
+  @media (min-width: 768px) {
+    .nav__links    { display: flex; }
+    .nav__hamburger { display: none; }
+  }
+</style>

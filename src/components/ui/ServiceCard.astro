@@ -5,15 +5,56 @@ interface Props {
   badge?: string;
   icon: string;
 }
-
 const { title, description, badge, icon } = Astro.props;
 ---
 
-<article class="rounded-card bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
-  <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
-    <span class="text-2xl">{icon}</span>
-  </div>
-  <h3 class="mb-2 text-lg font-bold text-text">{title}</h3>
-  <p class="text-sm leading-relaxed text-text/60">{description}</p>
-  {badge && <div class="mt-4"><span class="inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold text-accent">{badge}</span></div>}
+<article class="service-card">
+  <div class="service-card__icon">{icon}</div>
+  <h3>{title}</h3>
+  <p>{description}</p>
+  {badge && <span class="service-card__badge">{badge}</span>}
 </article>
+
+<style>
+  .service-card {
+    background: white;
+    border-radius: var(--radius-card);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s;
+  }
+  .service-card:hover { box-shadow: var(--shadow-md); }
+
+  .service-card__icon {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background-color: var(--color-accent-10);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .service-card h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+  .service-card p {
+    font-size: 0.875rem;
+    line-height: 1.625;
+    color: var(--color-text-60);
+  }
+  .service-card__badge {
+    display: inline-block;
+    margin-top: 1rem;
+    border-radius: 9999px;
+    background-color: var(--color-accent-10);
+    color: var(--color-accent);
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+</style>

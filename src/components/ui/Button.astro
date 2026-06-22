@@ -4,6 +4,7 @@ interface Props {
   variant?: 'primary' | 'outline';
   size?: 'sm' | 'md' | 'lg';
   type?: 'button' | 'submit' | 'reset';
+  fullWidth?: boolean;
   class?: string;
 }
 
@@ -12,33 +13,53 @@ const {
   variant = 'primary',
   size = 'md',
   type = 'button',
+  fullWidth = false,
   class: className = '',
 } = Astro.props;
 
-const base = 'inline-flex items-center justify-center font-semibold transition-colors rounded-btn';
-
-const sizes = {
-  sm: 'px-4 py-2 text-sm',
-  md: 'px-6 py-3 text-sm',
-  lg: 'px-8 py-4 text-base',
-};
-
-const variants = {
-  primary: 'bg-primary text-white hover:bg-primary/90',
-  outline: 'border-2 border-primary text-primary hover:bg-primary hover:text-white',
-};
-
-const classes = `${base} ${sizes[size]} ${variants[variant]} ${className}`;
+const classes = ['btn', `btn--${variant}`, `btn--${size}`, fullWidth ? 'btn--full' : '', className]
+  .filter(Boolean)
+  .join(' ');
 ---
 
-{
-  href ? (
-    <a href={href} class={classes}>
-      <slot />
-    </a>
-  ) : (
-    <button type={type} class={classes}>
-      <slot />
-    </button>
-  )
+{href
+  ? <a href={href} class={classes}><slot /></a>
+  : <button type={type} class={classes}><slot /></button>
 }
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-family: var(--font-sans);
+    border-radius: var(--radius-btn);
+    border: 2px solid transparent;
+    transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .btn--sm  { padding: 0.5rem 1rem;    font-size: 0.875rem; }
+  .btn--md  { padding: 0.75rem 1.5rem; font-size: 0.875rem; }
+  .btn--lg  { padding: 1rem 2rem;      font-size: 1rem; }
+  .btn--full { width: 100%; }
+
+  .btn--primary {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+  }
+  .btn--primary:hover { background-color: var(--color-primary-90); border-color: var(--color-primary-90); }
+
+  .btn--outline {
+    background-color: transparent;
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+  .btn--outline:hover {
+    background-color: var(--color-primary);
+    color: white;
+  }
+</style>

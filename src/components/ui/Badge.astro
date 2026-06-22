@@ -3,15 +3,19 @@ interface Props {
   text: string;
   color?: 'primary' | 'accent';
 }
-
 const { text, color = 'accent' } = Astro.props;
-
-const colors = {
-  primary: 'bg-primary/10 text-primary',
-  accent: 'bg-accent/10 text-accent',
-};
 ---
 
-<span class={`inline-block rounded-full px-3 py-1 text-xs font-semibold ${colors[color]}`}>
-  {text}
-</span>
+<span class={`badge badge--${color}`}>{text}</span>
+
+<style>
+  .badge {
+    display: inline-block;
+    border-radius: 9999px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .badge--primary { background-color: var(--color-primary-10); color: var(--color-primary); }
+  .badge--accent  { background-color: var(--color-accent-10);  color: var(--color-accent); }
+</style>

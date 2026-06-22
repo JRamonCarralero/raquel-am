@@ -4,12 +4,34 @@ interface Props {
   subtitle?: string;
   centered?: boolean;
 }
-
 const { title, subtitle, centered = false } = Astro.props;
 ---
 
-<div class={centered ? 'text-center' : ''}>
-  <h2 class="text-3xl font-bold text-text md:text-4xl">{title}</h2>
-  <div class={`mt-3 h-1 w-16 rounded-full bg-accent ${centered ? 'mx-auto' : ''}`}></div>
-  {subtitle && <p class="mt-4 text-base leading-relaxed text-text/60 md:text-lg">{subtitle}</p>}
+<div class={`section-title${centered ? ' section-title--centered' : ''}`}>
+  <h2>{title}</h2>
+  <div class="section-title__line"></div>
+  {subtitle && <p>{subtitle}</p>}
 </div>
+
+<style>
+  .section-title h2 {
+    font-size: clamp(1.875rem, 4vw, 2.25rem);
+    font-weight: 700;
+    color: var(--color-text);
+  }
+  .section-title__line {
+    width: 4rem;
+    height: 4px;
+    background-color: var(--color-accent);
+    border-radius: 9999px;
+    margin-top: 0.75rem;
+  }
+  .section-title p {
+    margin-top: 1rem;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--color-text-60);
+  }
+  .section-title--centered { text-align: center; }
+  .section-title--centered .section-title__line { margin-inline: auto; }
+</style>
