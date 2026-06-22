@@ -7,27 +7,40 @@ import Badge from '@components/ui/Badge.astro';
 import { Image } from 'astro:assets';
 import fotoPlaceholder from '../assets/placeholder-foto.svg';
 
+const svgHand = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>`;
+const svgZap = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`;
+const svgLeaf = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>`;
+const svgCpu = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M9 2v2M9 20v2M2 15h2M20 15h2M2 9h2M20 9h2"/></svg>`;
+const svgMessage = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>`;
+const svgTarget = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>`;
+const svgShield = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>`;
+const svgMapPin = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>`;
+const svgPhone = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.7 12.15a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 1.5h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.27-.94a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`;
+const svgMail = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>`;
+const svgWhatsApp = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>`;
+const svgInstagram = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>`;
+
 const services = [
   {
-    icon: '🤲',
+    icon: svgHand,
     title: 'Fisioterapia Manual',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Técnicas manuales para aliviar el dolor y recuperar la movilidad articular.',
     badge: 'Más solicitado',
   },
   {
-    icon: '🏃',
+    icon: svgZap,
     title: 'Fisioterapia Deportiva',
     description: 'Tratamiento y prevención de lesiones deportivas. Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam.',
     badge: 'Deportistas',
   },
   {
-    icon: '🧘',
+    icon: svgLeaf,
     title: 'Pilates Terapéutico',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ejercicio terapéutico para mejorar la postura y el control motor.',
     badge: 'Grupal / Individual',
   },
   {
-    icon: '🧠',
+    icon: svgCpu,
     title: 'Neurorehabilitación',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Recuperación funcional tras lesiones neurológicas.',
     badge: 'Especializado',
@@ -36,17 +49,17 @@ const services = [
 
 const valores = [
   {
-    icon: '👂',
+    icon: svgMessage,
     title: 'Escucha activa',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cada paciente tiene una historia única que merece ser escuchada.',
   },
   {
-    icon: '🎯',
+    icon: svgTarget,
     title: 'Tratamiento personalizado',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. No existen protocolos genéricos, solo planes adaptados a ti.',
   },
   {
-    icon: '🔬',
+    icon: svgShield,
     title: 'Evidencia científica',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Técnicas respaldadas por la investigación y la práctica clínica.',
   },
@@ -61,9 +74,9 @@ const titulaciones = [
 ];
 
 const contactInfo = [
-  { icon: '📍', label: 'Dirección', value: 'Calle del Bienestar, 42, 2ºB\n28001 Madrid' },
-  { icon: '📞', label: 'Teléfono', value: '+34 912 345 678' },
-  { icon: '✉️', label: 'Email', value: 'hola@raquel-fisioterapia.es' },
+  { icon: svgMapPin,  label: 'Dirección', value: 'Calle del Bienestar, 42, 2ºB\n28001 Madrid', href: null },
+  { icon: svgPhone,   label: 'Teléfono',  value: '+34 912 345 678',             href: 'tel:+34912345678' },
+  { icon: svgMail,    label: 'Email',      value: 'hola@raquel-fisioterapia.es', href: 'mailto:hola@raquel-fisioterapia.es' },
 ];
 
 const horario = [
@@ -82,7 +95,7 @@ const horario = [
   <section id="inicio" class="hero">
     <div class="hero__inner">
       <div class="hero__content">
-        <p class="hero__eyebrow">Fisioterapia · Madrid</p>
+        <p class="hero__pill">Fisioterapia · Madrid</p>
         <h1 class="hero__title">Tu bienestar,<br />en buenas manos</h1>
         <p class="hero__desc">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam,
@@ -120,7 +133,7 @@ const horario = [
           centered
         />
       </div>
-      <div class="services-grid">
+      <div class="services-grid" data-reveal-stagger>
         {services.map((s) => <ServiceCard {...s} />)}
       </div>
     </div>
@@ -129,7 +142,7 @@ const horario = [
   <!-- ── QUIÉN SOY ─────────────────────────────────────────── -->
   <section id="quien-soy" class="section section--white">
     <div class="container">
-      <div class="bio-grid">
+      <div class="bio-grid" data-reveal>
         <div class="bio__img-wrap">
           <Image
             src={fotoPlaceholder}
@@ -177,15 +190,17 @@ const horario = [
             centered
           />
         </div>
-        <div class="valores-grid">
+        <ul class="valores-list" data-reveal-stagger>
           {valores.map(({ icon, title, description }) => (
-            <div class="valor-card">
-              <div class="valor-card__icon">{icon}</div>
-              <h3>{title}</h3>
-              <p>{description}</p>
-            </div>
+            <li class="valor-item">
+              <div class="valor-item__icon" set:html={icon} />
+              <div class="valor-item__content">
+                <h3 class="valor-item__title">{title}</h3>
+                <p class="valor-item__desc">{description}</p>
+              </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </div>
   </section>
@@ -196,17 +211,20 @@ const horario = [
       <div class="section__header">
         <SectionTitle title="Contacto" subtitle="Te responderemos en menos de 24 horas." centered />
       </div>
-      <div class="contact-grid">
+      <div class="contact-grid" data-reveal>
 
         <!-- Info -->
         <div class="contact-info">
           <ul class="contact-info__list">
-            {contactInfo.map(({ icon, label, value }) => (
+            {contactInfo.map(({ icon, label, value, href }) => (
               <li class="contact-info__item">
-                <div class="contact-info__icon">{icon}</div>
+                <div class="contact-info__icon" set:html={icon} />
                 <div>
                   <p class="contact-info__label">{label}</p>
-                  <p class="contact-info__value">{value}</p>
+                  {href
+                    ? <a href={href} class="contact-info__value contact-info__link">{value}</a>
+                    : <p class="contact-info__value">{value}</p>
+                  }
                 </div>
               </li>
             ))}
@@ -223,58 +241,92 @@ const horario = [
               ))}
             </ul>
           </div>
-
-          <div class="contact-map">
-            <span class="contact-map__icon">🗺️</span>
-            <p>Mapa de ubicación</p>
-            <p class="contact-map__sub">Calle del Bienestar, 42 — Madrid</p>
-          </div>
         </div>
 
-        <!-- Formulario -->
-        <div class="contact-form-wrap">
-          <form class="contact-form" action="#" method="POST">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="nombre">Nombre <span class="form-required">*</span></label>
-                <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre" />
-              </div>
-              <div class="form-group">
-                <label for="email">Email <span class="form-required">*</span></label>
-                <input type="email" id="email" name="email" required placeholder="tu@email.com" />
-              </div>
+        <!-- Redes y mapa -->
+        <div class="contact-right">
+          <div class="contact-map">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="contact-map__icon"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <p class="contact-map__address">Calle del Bienestar, 42, 2ºB</p>
+            <p class="contact-map__sub">28001 Madrid</p>
+          </div>
+
+          <div class="contact-social">
+            <p class="contact-social__title">Contacta por</p>
+            <div class="contact-social__list">
+              <a href="https://wa.me/34912345678" class="contact-social__link" target="_blank" rel="noopener">
+                <span class="contact-social__link-icon" set:html={svgWhatsApp} />
+                <span>WhatsApp</span>
+              </a>
+              <a href="https://instagram.com/raquel.fisioterapia" class="contact-social__link" target="_blank" rel="noopener">
+                <span class="contact-social__link-icon" set:html={svgInstagram} />
+                <span>Instagram</span>
+              </a>
+              <a href="mailto:hola@raquel-fisioterapia.es" class="contact-social__link">
+                <span class="contact-social__link-icon" set:html={svgMail} />
+                <span>hola@raquel-fisioterapia.es</span>
+              </a>
             </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="telefono">Teléfono</label>
-                <input type="tel" id="telefono" name="telefono" placeholder="+34 6XX XXX XXX" />
-              </div>
-              <div class="form-group">
-                <label for="asunto">Asunto</label>
-                <select id="asunto" name="asunto">
-                  <option value="">Selecciona una opción</option>
-                  <option value="primera-visita">Primera visita</option>
-                  <option value="revision">Revisión</option>
-                  <option value="informacion">Solicitar información</option>
-                  <option value="otro">Otro</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="mensaje">Mensaje <span class="form-required">*</span></label>
-              <textarea id="mensaje" name="mensaje" required rows="5" placeholder="Cuéntanos qué podemos hacer por ti..."></textarea>
-            </div>
-            <Button type="submit" variant="primary" size="lg" fullWidth>Enviar mensaje</Button>
-            <p class="form-note">* Campos obligatorios. Tus datos se tratarán conforme a nuestra política de privacidad.</p>
-          </form>
+          </div>
         </div>
 
       </div>
     </div>
   </section>
+
+<script>
+  document.documentElement.classList.add('js-ready');
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -48px 0px' }
+  );
+
+  document.querySelectorAll('[data-reveal], [data-reveal-stagger]').forEach((el) => {
+    observer.observe(el);
+  });
+</script>
 </BaseLayout>
 
 <style>
+  /* ── Hero entrance ── */
+  @keyframes hero-fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: none; }
+  }
+  @keyframes hero-scale-in {
+    from { opacity: 0; transform: scale(1.04); }
+    to   { opacity: 1; transform: none; }
+  }
+  .hero__content  { animation: hero-fade-up  650ms var(--ease-out-expo)  80ms both; }
+  .hero__img-wrap { animation: hero-scale-in 800ms var(--ease-out-expo) 320ms both; }
+
+  /* ── Scroll reveals ── */
+  .js-ready [data-reveal] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 650ms var(--ease-out-expo), transform 650ms var(--ease-out-expo);
+  }
+  .js-ready [data-reveal].is-visible { opacity: 1; transform: none; }
+
+  .js-ready [data-reveal-stagger] > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 500ms var(--ease-out-expo), transform 500ms var(--ease-out-expo);
+  }
+  .js-ready [data-reveal-stagger].is-visible > * { opacity: 1; transform: none; }
+  .js-ready [data-reveal-stagger].is-visible > *:nth-child(1) { transition-delay:   0ms; }
+  .js-ready [data-reveal-stagger].is-visible > *:nth-child(2) { transition-delay:  80ms; }
+  .js-ready [data-reveal-stagger].is-visible > *:nth-child(3) { transition-delay: 160ms; }
+  .js-ready [data-reveal-stagger].is-visible > *:nth-child(4) { transition-delay: 240ms; }
+
   /* ── Layout ── */
   .container {
     max-width: var(--max-width);
@@ -301,18 +353,21 @@ const horario = [
     align-items: center;
   }
   .hero__content { color: white; text-align: center; }
-  .hero__eyebrow {
-    font-size: 0.875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--white-70);
-    margin-bottom: 0.75rem;
+  .hero__pill {
+    display: inline-block;
+    margin-bottom: 1.25rem;
+    padding: 0.25rem 0.875rem;
+    border: 1px solid var(--white-70);
+    border-radius: 9999px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--white-90);
   }
   .hero__title {
     font-size: clamp(2.25rem, 6vw, 3.75rem);
     font-weight: 700;
     line-height: 1.15;
+    text-wrap: balance;
   }
   .hero__desc {
     margin-top: 1.5rem;
@@ -336,8 +391,10 @@ const horario = [
     font-size: 1rem;
     font-weight: 600;
     border-radius: var(--radius-btn);
-    transition: background-color 0.15s, color 0.15s;
+    transition: background-color 0.15s, color 0.15s, transform 0.2s var(--ease-out-quint);
   }
+  .hero__btn:hover  { transform: translateY(-2px); }
+  .hero__btn:active { transform: scale(0.97); }
   .hero__btn--outline {
     border: 2px solid white;
     color: white;
@@ -416,25 +473,43 @@ const horario = [
 
   /* ── VALORES ── */
   .valores { margin-top: 5rem; }
-  .valores-grid { display: grid; gap: 1.5rem; }
-  @media (min-width: 768px) { .valores-grid { grid-template-columns: repeat(3, 1fr); } }
 
-  .valor-card {
-    background: var(--color-bg);
-    border-radius: var(--radius-card);
-    padding: 2rem;
-    box-shadow: var(--shadow-sm);
+  .valores-list { display: flex; flex-direction: column; }
+
+  .valor-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--color-primary-10);
   }
-  .valor-card__icon {
-    width: 3.5rem; height: 3.5rem;
+  .valor-item:last-child { border-bottom: none; }
+
+  .valor-item__icon {
+    width: 3.5rem; height: 3.5rem; flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
     border-radius: 9999px;
     background-color: var(--color-accent-10);
-    font-size: 1.75rem;
-    margin-bottom: 1rem;
   }
-  .valor-card h3 { font-size: 1.25rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.75rem; }
-  .valor-card p  { font-size: 0.875rem; line-height: 1.625; color: var(--color-text-60); }
+  .valor-item__icon svg { width: 1.5rem; height: 1.5rem; stroke: var(--color-accent); }
+
+  .valor-item__title {
+    font-size: 1.125rem; font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+  .valor-item__desc {
+    font-size: 0.9375rem; line-height: 1.7;
+    color: var(--color-text-70);
+    max-width: 52ch;
+  }
+
+  @media (min-width: 768px) {
+    .valor-item { gap: 2rem; padding: 2.5rem 0; }
+    .valor-item__icon { width: 4rem; height: 4rem; }
+    .valor-item__icon svg { width: 1.75rem; height: 1.75rem; }
+    .valor-item__title { font-size: 1.25rem; }
+  }
 
   /* ── CONTACTO ── */
   .contact-grid { display: grid; gap: 3rem; }
@@ -447,10 +522,12 @@ const horario = [
     display: flex; align-items: center; justify-content: center;
     border-radius: 9999px;
     background-color: var(--color-accent-10);
-    font-size: 1.25rem;
   }
+  .contact-info__icon svg { width: 1.125rem; height: 1.125rem; stroke: var(--color-accent); }
   .contact-info__label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-40); }
   .contact-info__value { font-size: 0.875rem; color: var(--color-text-80); white-space: pre-line; margin-top: 0.25rem; }
+  .contact-info__link  { display: block; font-size: 0.875rem; color: var(--color-primary); margin-top: 0.25rem; transition: color 0.15s; }
+  .contact-info__link:hover { color: var(--color-accent); }
 
   .contact-schedule {
     margin-top: 2rem;
@@ -464,56 +541,40 @@ const horario = [
   .contact-schedule__list li { display: flex; justify-content: space-between; font-size: 0.875rem; color: var(--color-text-70); }
   .contact-schedule__hours { font-weight: 500; color: var(--color-text); }
 
+  .contact-right { display: flex; flex-direction: column; gap: 1.5rem; }
+
   .contact-map {
-    margin-top: 2rem;
-    height: 12rem;
+    height: 11rem;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     border-radius: var(--radius-card);
     border: 2px dashed var(--color-primary-20);
     background: white;
-    color: var(--color-text-40);
+    color: var(--color-text-50);
     text-align: center;
+    gap: 0.5rem;
   }
-  .contact-map__icon { font-size: 2.5rem; }
-  .contact-map p     { margin-top: 0.5rem; font-size: 0.875rem; }
-  .contact-map__sub  { font-size: 0.75rem; }
+  .contact-map__icon { width: 2.25rem; height: 2.25rem; stroke: var(--color-primary-20); }
+  .contact-map__address { font-size: 0.875rem; font-weight: 500; color: var(--color-text-70); }
+  .contact-map__sub { font-size: 0.75rem; color: var(--color-text-40); }
 
-  .contact-form-wrap {
+  .contact-social {
     background: white;
     border-radius: var(--radius-card);
-    padding: 2rem;
+    padding: 1.5rem;
     box-shadow: var(--shadow-sm);
   }
-  .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
-
-  .form-row { display: grid; gap: 1.25rem; }
-  @media (min-width: 640px) { .form-row { grid-template-columns: 1fr 1fr; } }
-
-  .form-group { display: flex; flex-direction: column; gap: 0.375rem; }
-  .form-group label { font-size: 0.875rem; font-weight: 500; color: var(--color-text-70); }
-  .form-required { color: #f87171; }
-
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    width: 100%;
+  .contact-social__title { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-40); margin-bottom: 1rem; }
+  .contact-social__list  { display: flex; flex-direction: column; gap: 0.5rem; }
+  .contact-social__link  {
+    display: flex; align-items: center; gap: 0.75rem;
     padding: 0.75rem 1rem;
-    font-size: 0.875rem;
-    font-family: var(--font-sans);
+    border-radius: var(--radius-btn);
+    font-size: 0.875rem; font-weight: 500;
     color: var(--color-text);
-    border: 1px solid #e5e7eb;
-    border-radius: 0.5rem;
-    outline: none;
-    transition: border-color 0.15s, box-shadow 0.15s;
-    background: white;
+    background: var(--color-bg);
+    transition: background-color 0.15s, color 0.15s, transform 0.2s var(--ease-out-quint);
   }
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    border-color: var(--color-accent);
-    box-shadow: 0 0 0 3px var(--color-accent-20);
-  }
-  .form-group textarea { resize: none; }
-
-  .form-note { font-size: 0.75rem; color: var(--color-text-40); text-align: center; }
+  .contact-social__link:hover { background: var(--color-accent-10); color: var(--color-primary); transform: translateX(4px); }
+  .contact-social__link-icon { width: 1.25rem; height: 1.25rem; flex-shrink: 0; display: flex; }
+  .contact-social__link-icon svg { width: 1.25rem; height: 1.25rem; stroke: var(--color-accent); }
 </style>

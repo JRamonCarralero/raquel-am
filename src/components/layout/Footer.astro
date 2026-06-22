@@ -1,5 +1,10 @@
 ---
 const year = new Date().getFullYear();
+
+const svgMapPin = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>`;
+const svgPhone = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.7 12.15a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 1.5h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.27-.94a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`;
+const svgMail = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>`;
+
 const navLinks = [
   { href: '#inicio',    label: 'Inicio' },
   { href: '#quien-soy', label: 'Quién soy' },
@@ -31,9 +36,9 @@ const navLinks = [
       <div class="footer__col">
         <p class="footer__col-title">Contacto</p>
         <ul class="footer__info">
-          <li>📍 Calle del Bienestar, 42, 2ºB — Madrid</li>
-          <li>📞 +34 912 345 678</li>
-          <li>✉️ hola@raquel-fisioterapia.es</li>
+          <li class="footer__info-item"><span set:html={svgMapPin} /> Calle del Bienestar, 42, 2ºB — Madrid</li>
+          <li class="footer__info-item"><span set:html={svgPhone} /><a href="tel:+34912345678">+34 912 345 678</a></li>
+          <li class="footer__info-item"><span set:html={svgMail} /><a href="mailto:hola@raquel-fisioterapia.es">hola@raquel-fisioterapia.es</a></li>
           <li class="footer__info-spacer">Horario</li>
           <li>Lun–Vie: 9:00 – 20:00</li>
           <li>Sáb: 10:00 – 14:00</li>
@@ -83,6 +88,11 @@ const navLinks = [
   .footer__nav-link:hover { color: var(--color-primary); }
 
   .footer__info { display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.875rem; color: var(--color-text-70); }
+  .footer__info-item { display: flex; align-items: flex-start; gap: 0.5rem; }
+  .footer__info-item span { display: flex; flex-shrink: 0; margin-top: 0.125rem; }
+  .footer__info-item svg { width: 0.875rem; height: 0.875rem; stroke: var(--color-accent); }
+  .footer__info-item a { color: var(--color-text-70); transition: color 0.15s; }
+  .footer__info-item a:hover { color: var(--color-primary); }
   .footer__info-spacer { font-weight: 500; color: var(--color-text-50); padding-top: 0.5rem; }
 
   .footer__copy {
